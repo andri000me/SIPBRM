@@ -46,6 +46,24 @@
                 <span class="menu-title">Dokter</span>
             </a>
         </li>
+        <li class="nav-item <?= ($this->uri->segment(1) == "pendidikan" ? 'active' : '') ?>">
+            <a class="nav-link" href="<?=base_url('pendidikan')?>">
+                <i class="menu-icon mdi mdi-book"></i>
+                <span class="menu-title">Pendidikan</span>
+            </a>
+        </li>
+        <li class="nav-item <?= ($this->uri->segment(1) == "pekerjaan" ? 'active' : '') ?>">
+            <a class="nav-link" href="<?=base_url('pekerjaan')?>">
+                <i class="menu-icon mdi mdi-worker"></i>
+                <span class="menu-title">Pekerjaan</span>
+            </a>
+        </li>
+        <li class="nav-item <?= ($this->uri->segment(1) == "agama" ? 'active' : '') ?>">
+            <a class="nav-link" href="<?=base_url('agama')?>">
+                <i class="menu-icon mdi mdi-account-network"></i>
+                <span class="menu-title">Agama</span>
+            </a>
+        </li>
         <li class="nav-item <?= ($this->uri->segment(1) == "pasien" ? 'active' : '') ?>">
             <a class="nav-link" href="<?=base_url('pasien')?>">
                 <i class="menu-icon mdi mdi-book"></i>
