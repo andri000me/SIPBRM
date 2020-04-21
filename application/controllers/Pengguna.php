@@ -9,11 +9,10 @@ class Pengguna extends CI_Controller {
 		$this->load->helper("Response_helper");
 		$this->load->helper("Input_helper");
 		date_default_timezone_set('Asia/Jakarta');
-		// echo $this->uri->segment(2);
-		if($this->uri->segment(3) == "add" && $_SERVER['REQUEST_METHOD'] == "POST"){
+		if($this->uri->segment(2) == "add" && $_SERVER['REQUEST_METHOD'] == "POST"){
 		  $this->store();
-		}else if($this->uri->segment(3) == "edit" && $_SERVER['REQUEST_METHOD'] == "POST"){
-		  $this->update($this->uri->segment(4));
+		}else if($this->uri->segment(2) == "edit" && $_SERVER['REQUEST_METHOD'] == "POST"){
+		  $this->update($this->uri->segment(3));
 		}
     }
     public function index(){
@@ -40,7 +39,7 @@ class Pengguna extends CI_Controller {
 				'nama' => $this->input->post('nama'), 
 				'email' => $this->input->post('email'), 
 				'level' => $this->input->post('level'), 
-				'create_by' => $_SESSION['userid'],  
+				'created_by' => $_SESSION['userid'],  
 				'status' => $this->input->post('status')
 			];
 			if($d['password'] != $d['password_konfirmasi']){

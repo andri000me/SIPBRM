@@ -18,7 +18,11 @@ class Peminjaman extends CI_Controller {
     public function index(){
 		$data['title'] = "Data $this->cap";
 		$data['content'] = "$this->low/index";
-		$data['data'] = $this->db->query("SELECT p.nama, pem.* FROM $this->low pem JOIN pengguna p ON pem.created_by=p.id")->result_array();
+		$where = "";
+		if ($_SESSION['userlevel'] == 4) {
+			$where.=" WHERE pem.id= $_SESSION[userid]";
+		}
+		$data['data'] = $this->db->query("SELECT p.nama, pem.* FROM $this->low pem JOIN pengguna p ON pem.created_by=p.id $where")->result_array();
         $this->load->view('backend/index',$data);
     }
 	

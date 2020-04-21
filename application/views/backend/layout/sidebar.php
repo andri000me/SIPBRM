@@ -28,12 +28,16 @@
             <span class="menu-title">Dashboard</span>
         </a>
         </li>
+        <?php if ($_SESSION['userlevel'] == 1) {?>
         <li class="nav-item  <?= ($this->uri->segment(1) == "pengguna" ? 'active' : '') ?>">
             <a class="nav-link" href="<?=base_url('pengguna')?>">
                 <i class="menu-icon mdi mdi-format-list-checks"></i>
                 <span class="menu-title">Pengguna</span>
             </a>
         </li>
+        <?php } 
+        if (in_array($_SESSION['userlevel'], [1, 2])) {
+        ?>
         <li class="nav-item <?= ($this->uri->segment(1) == "poli" ? 'active' : '') ?>">
             <a class="nav-link" href="<?=base_url('poli')?>">
                 <i class="menu-icon mdi mdi-format-list-bulleted"></i>
@@ -64,13 +68,18 @@
                 <span class="menu-title">Agama</span>
             </a>
         </li>
+        <?php } 
+        
+        if (in_array($_SESSION['userlevel'], [1, 3, 4, 5])) {
+            if (in_array($_SESSION['userlevel'], [1, 3])) {
+        ?>
         <li class="nav-item <?= ($this->uri->segment(1) == "pasien" ? 'active' : '') ?>">
             <a class="nav-link" href="<?=base_url('pasien')?>">
                 <i class="menu-icon mdi mdi-book"></i>
                 <span class="menu-title">Pasien</span>
             </a>
         </li>
-        
+        <?php } ?>
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#peminjaman" aria-expanded="false" aria-controls="peminjaman">
                 <i class="menu-icon mdi mdi-content-copy"></i>
@@ -79,15 +88,18 @@
             </a>
             <div class="collapse" id="peminjaman">
                 <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
-                    <a class="nav-link" href="<?=base_url('peminjaman')?>">Peminjaman</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?=base_url('pengembalian')?>">Pengembalian</a>
-                </li>
+                <?php if (in_array($_SESSION['userlevel'], [4, 1])) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?=base_url('peminjaman')?>">Peminjaman</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?=base_url('pengembalian')?>">Pengembalian</a>
+                    </li>
+                    <?php } ?>
                 </ul>
             </div>
         </li>
+        <?php } ?>
         <li class="nav-item">
             <a class="nav-link" href="<?=base_url('apps/logout')?>">
                 <i class="menu-icon mdi mdi-logout"></i>

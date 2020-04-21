@@ -16,14 +16,13 @@
                 <tbody>
                 <?php
                     $no = 1;
-                    $level = ['', 'Super Admin', 'Admin', 'User'];
                     foreach ($data as $d) {
                     ?>
                 <tr class="<?= ($d['status'] == 0 ? 'table-danger' : '')?>">
                     <td><?=$no ?></td>
                     <td><?= $d['nama'] ?></td>
                     <td><?= $d['email'] ?></td>
-                    <td><?= $level[$d['level']] ?></td>
+                    <td><?= LEVEL[$d['level']] ?></td>
                     <td>
                         <a href='<?=base_url($this->uri->segment(1)."/edit/".$d['id'])?>'>
                             <button type="button" class="btn btn-sms btn-icons btn-rounded btn-outline-info">
