@@ -68,10 +68,9 @@ class Peminjaman extends CI_Controller {
 	}
 	public function detail($id){
 		$data['title'] = "Ubah $this->cap";
-		$data['content'] = "$this->low/_detail";
-		$data['type'] = 'Ubah';
-		$data['data'] = $this->db->query("SELECT d.*, p.nama as poli FROM $this->low d JOIN poli p ON d.id_poli=d.id WHERE d.id='$id'")->row_array();		
-		$this->load->view('backend/index',$data);
+		$data['type'] = 'Detail';
+		$data['data'] = $this->db->query("SELECT pm.id, pm.no_rm, pm.keperluan, pm.keterangan, pm.tanggal_harus_kembali, pm.created_at, p.nama, p.alamat, pg.nama as peminjam, pg.email FROM `peminjaman` pm join pasien p ON pm.no_rm=p.no_rm JOIN pengguna pg ON pm.created_by=pg.id WHERE pm.id='$id'")->row_array();		
+		$this->load->view('backend/content/peminjaman/_detail',$data);
 	}
 	
 	public function update($id){

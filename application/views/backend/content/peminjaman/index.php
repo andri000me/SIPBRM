@@ -38,7 +38,7 @@
                     <td><?=($d['status'] == 0 ? 'belum dikembalikan' : 'sudah dikembalikan')?></td>
                     <td><?= $d['tanggal_harus_kembali'] ?></td>
                     <td>
-                         <a href='<?=base_url($this->uri->segment(1)."/detail/".$d['no_rm'])?>'>
+                         <a target="_blank" href='<?=base_url($this->uri->segment(1)."/detail/".$d['id'])?>'>
                             <button type="button" class="btn btn-sm btn-sms btn-icons btn-rounded btn-outline-warning">
                             <i class="mdi mdi-book"></i>
                             </button> 
@@ -46,7 +46,7 @@
                         <?php
                         if($d['status'] == 0){
                         ?>
-                        <a href='<?=base_url("pengembalian"."/kembalikan/".$d['no_rm'])?>'>
+                        <a target="_blank" href='<?=base_url("pengembalian"."/kembalikan/".$d['id'])?>'>
                             <button type="button" class="btn btn-sm btn-sms  btn-outline-primary" >
                             Kembalikan
                             </button> 
