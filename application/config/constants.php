@@ -85,7 +85,7 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 
-define("LEVEL", array('', 'Super Admin', 'Admin', 'TPPRI'));
+define("LEVEL", array('', 'Super Admin', 'Admin', 'TPPRI', 'Filling', 'Rawat Inap', 'Assembling'));
 define("STATUS_PENGGUNA", array('Tidak Aktif', 'Aktif'));
 define("GENDER", array('Perempuan', 'Laki Laki'));
 define("TYPE_LOG", array('menghapus', 'menambah','edit', 'konfirmasi', 'menolak'));
