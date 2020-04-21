@@ -46,7 +46,7 @@
                         <?php
                         if($d['status'] == 0){
                         ?>
-                        <a target="_blank" href='<?=base_url("pengembalian"."/kembalikan/".$d['id'])?>'>
+                        <a href='<?=base_url("pengembalian"."/kembalikan/".$d['id'])?>'>
                             <button type="button" class="btn btn-sm btn-sms  btn-outline-primary" >
                             Kembalikan
                             </button> 

@@ -3,7 +3,7 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
         <div class="card-body">
-            <h4 class="card-title"><?=$title?> <a href="<?php echo base_url($this->uri->segment(1)); ?>/add"><button class="btn btn-primary btn-sm pull-right">Peminjaman Baru <span class="fa fa-plus"></span></button></a><br><br /></h4>
+            <h4 class="card-title"><?=$title?> <br><br /></h4>
             <?php
                 if(isset($_SESSION['message'])){
                 echo "<div style='margin-top:20px' class='alert alert-".$_SESSION['message'][0]."'>
@@ -15,7 +15,12 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>No</th><th>Nama Peminjam</th><th>Keterangan</th><th>Status</th><th>Tanggal Pinjam</th><th>Aksi</th>
+                    <th>No</th>
+                    <?php 
+                    if (in_array($_SESSION['userid'] , [1, 2])) {?>
+                        <th>Nama Peminjam</th>
+                    <?php } ?>
+                    <th>Keterangan</th><th>Tanggal Pinjam</th><th>Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -25,12 +30,14 @@
                     ?>
                 <tr>
                     <td><?=$no ?></td>
+                    <?php 
+                    if (in_array($_SESSION['userid'] , [1, 2])) {?>
                     <td><?= $d['nama'] ?></td>
+                    <?php } ?>
                     <td><?= $d['keterangan'] ?></td>
-                    <td><?=($d['status'] == 0 ? 'belum dikembalikan' : 'sudah dikembalikan')?></td>
-                    <td><?= $d['create_at'] ?></td>
+                    <td><?= $d['created_at'] ?></td>
                     <td>
-                         <a href='<?=base_url($this->uri->segment(1)."/detail/".$d['kd_peminjaman'])?>'>
+                        <a target="_blank" href='<?=base_url($this->uri->segment(1)."/detail/".$d['id'])?>'>
                             <button type="button" class="btn btn-sm btn-sms btn-icons btn-rounded btn-outline-warning">
                             <i class="mdi mdi-book"></i>
                             </button> 
