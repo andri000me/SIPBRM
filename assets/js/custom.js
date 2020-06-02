@@ -1,4 +1,31 @@
 $(document).ready(function () {
+    $("#no_rm").keyup(function(){
+        var val = $(this).val();
+        if(val == ""){
+            $(".msg").removeClass("alert alert-danger");
+            $(".msg").text("");
+        }
+        $.ajax({
+            type: "GET",
+            url: BASEURL+"peminjaman/checkRm/"+val,
+            cache: false,
+            success: function(data){
+                if(data != ""){
+                    $(".msg").text(data);
+                    $(".msg").addClass("alert alert-danger");
+                    $(".btn").hide();
+                }else{
+                    $(".msg").text("");
+                    $(".msg").removeClass("alert alert-danger");
+                    $(".btn").show();
+                }
+            },
+            error(res){
+                console.log("errrror")
+                console.log("res");
+            }
+        });
+    })
     var selected = $('#jk option').filter(':selected').text();
     var id_desa_selected = $("#id_desa_selected").val();
     var button = $("#simpan").text();

@@ -31,7 +31,7 @@
                 <div class="form-group row">
                   <!-- <label class="col-sm-3 col-form-label">Address 1</label> -->
                   <div class="col-sm-12">
-                    <textarea class='form-control' rows='8' name='keterangan' placeholder='masukkan keterangan' name='keterangan'><?= Input_helper::postOrOr('keterangan') ?></textarea>
+                    <textarea class='form-control' rows='8' name='keterangan' placeholder='masukkan keterangan' required name='keterangan'><?= Input_helper::postOrOr('keterangan') ?></textarea>
                   </div>
                 </div>
               </div>

@@ -34,9 +34,9 @@
                 </div>
             </div>
             </a>
-            <a class="dropdown-item mt-2" href='<?=base_url('akun/settings')?>'>
+            <!-- <a class="dropdown-item mt-2" href='<?=base_url('akun/settings')?>'>
             Pengaturan Akun
-            </a>
+            </a> -->
             <a class="dropdown-item" href="<?=base_url('apps/logout')?>">
             Sign Out
             </a>

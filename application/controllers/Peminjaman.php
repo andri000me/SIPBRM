@@ -66,6 +66,13 @@ class Peminjaman extends CI_Controller {
 		$data['data'] = $this->db->get_where("$this->low", ['id' => $id])->row_array();		
 		$this->load->view('backend/index',$data);
 	}
+	public function checkRm($val){
+		$data = $this->db->get_where("pasien", ['no_rm' => $val]);
+
+		if($data->num_rows() < 1){
+			echo "No Rm yang anda masukan tidak ada dalam database";
+		}
+	}
 	public function detail($id){
 		$data['title'] = "Ubah $this->cap";
 		$data['type'] = 'Detail';

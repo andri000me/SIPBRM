@@ -31,7 +31,7 @@
                 <div class="form-group">
                   <button class="btn btn-primary submit-btn btn-block">Login</button>
                 </div>
-                <div class="form-group d-flex justify-content-between">
+                <!-- <div class="form-group d-flex justify-content-between">
                   <div class="form-check form-check-flat mt-0">
                     <label class="form-check-label">
                       <input type="checkbox" class="form-check-input" checked> Keep me signed in
@@ -46,7 +46,7 @@
                 <div class="text-block text-center my-3">
                   <span class="text-small font-weight-semibold">Not a member ?</span>
                   <a href="register.html" class="text-black text-small">Create new account</a>
-                </div>
+                </div> -->
               </form>
             </div>
             <ul class="auth-footer">

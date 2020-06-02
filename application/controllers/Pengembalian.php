@@ -12,7 +12,16 @@ class Pengembalian extends CI_Controller {
 		if($this->uri->segment(2) == "kembalikan" && $_SERVER['REQUEST_METHOD'] == "POST"){
 			$this->update($this->uri->segment(3));
 		}
-    }
+	}
+	public function notification(){
+		$apiToken = "1048537149:AAEjn0E8xMhUGna-q48mtk0-M3GfDxcT-_I";
+		$data = [
+			'chat_id' => '@ludfyrahman',
+			'text' => 'Hello world!'
+		];
+
+		$response = file_get_contents("https://api.telegram.org/bot$apiToken/sendMessage?" . http_build_query($data) );
+	}
     public function index(){
 		$data['title'] = "Data $this->cap";
 		$data['content'] = "$this->low/index";
@@ -34,7 +43,14 @@ class Pengembalian extends CI_Controller {
 		$this->load->view('backend/content/pengembalian/_detail',$data);
 		// print_r($data);
 	}
-
+	public function kembalikan($id){
+		$data['title'] = " $this->cap Berkas";
+		$data['content'] = "$this->low/_form";
+		$data['type'] = 'Ubah';
+		$data['provinsi'] = $this->db->get("provinsi")->result_array();
+		$data['data'] = $this->db->get_where("peminjaman", ['id' => $id])->row_array();		
+		$this->load->view('backend/index',$data);
+	}
 	public function update($id){
 		$d = $_POST;
 		try{
