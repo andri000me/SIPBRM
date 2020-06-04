@@ -9,42 +9,45 @@ class Response_helper
 	{
 		include str_replace("system", "application/views/", BASEPATH) . "part/$file.php";
 	}
+	
+	public static function getData(){
+		$CI =& get_instance();
+		$token = "1048537149:AAEjn0E8xMhUGna-q48mtk0-M3GfDxcT-_I";
+		$now = date("Y-m-d H:i:s");
+		// echo "SELECT * FROM peminjaman where tanggal_harus_kembali >= '$now'";
+		$list = $CI->db->query("SELECT p.*, pg.chat_id, pas.nama as nama_pasien FROM peminjaman p 
+		JOIN pengguna pg ON p.created_by=pg.id 
+		JOIN pasien pas ON p.no_rm=pas.no_rm
+		where tanggal_harus_kembali >= '$now'")->result_array();
+		foreach ($list as $d) {
+			// echo $d['no_rm']."<br>";
+			// echo $d['nama']."<br>";
+			$pesan = "Notifikasi Aplikasi \n no rekam medis *$d[no_rm] & nama pasien $d[nama_pasien]*  hrs segera dikembalikan";
+			// $CI->db->update("peminjaman", ['status_notif' => 1], ['id' => $d['id']]);
+			$cek = $CI->db->get_where("peminjaman", ['status_notif' => 0, 'id' => $d['id']])->num_rows();
+			// echo $cek;
+			if($cek > 0){
+				$CI->db->query("UPDATE peminjaman set status_notif=1 where id=$d[id] and status_notif=0");
+				Response_Helper::notification($d['chat_id'], $pesan, $token);
+			}
+		}
+	}
+	public static function notification($telegram_id, $message_text, $secret_token){
+		$url = "https://api.telegram.org/bot" . $secret_token . "/sendMessage?parse_mode=markdown&chat_id=" . $telegram_id;
+		$url = $url . "&text=" . urlencode($message_text);
+		$ch = curl_init();
+		$optArray = array(
+				CURLOPT_URL => $url,
+				CURLOPT_RETURNTRANSFER => true
+		);
+		curl_setopt_array($ch, $optArray);
+		$result = curl_exec($ch);
+		curl_close($ch);
+	}
 	public static function price($n, $precision = 2)
 	{
 		$re = "Rp ".number_format($n, 0,',','.');
-		// $ci = get_instance();
-		// $cek = $ci->db->get_where("pengaturan_app", ['kode' => 1])->row_array();
-		// if($cek['format_view_price'] == '2'){
-
-		// 	if ($n < 900) {
-		// 		// 0 - 900
-		// 		$n_format = number_format($n, $precision,',','.');
-		// 		$suffix = '';
-		// 	} else if ($n < 900000) {
-		// 		// 0.9k-850k
-		// 		$n_format = number_format($n / 1000, $precision,',','.');
-		// 		$suffix = 'K';
-		// 	} else if ($n < 900000000) {
-		// 		// 0.9m-850m
-		// 		$n_format = number_format($n / 1000000, $precision,',','.');
-		// 		$suffix = 'JT';
-		// 	} else if ($n < 900000000000) {
-		// 		// 0.9b-850b
-		// 		$n_format = number_format($n / 1000000000, $precision,',','.');
-		// 		$suffix = 'M';
-		// 	} else {
-		// 		// 0.9t+
-		// 		$n_format = number_format($n / 1000000000000, $precision,',','.');
-		// 		$suffix = 'T';
-		// 	}
-		 
-		// 	if ( $precision > 0 ) {
-		// 		$dotzero = '.' . str_repeat( '0', $precision );
-		// 		$n_format = str_replace( $dotzero, '', $n_format );
-		// 	}
-		 
-		// 	$re = $re.' ('.$n_format . $suffix.')';
-		// }
+		
 		return $re;
 	}
 	

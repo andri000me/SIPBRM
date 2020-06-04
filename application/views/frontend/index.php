@@ -1,3 +1,7 @@
+<?php 
+
+Response_Helper::getData();
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
