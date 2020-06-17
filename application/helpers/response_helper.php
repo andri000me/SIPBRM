@@ -18,7 +18,7 @@ class Response_helper
 		$list = $CI->db->query("SELECT p.*, pg.chat_id, pas.nama as nama_pasien FROM peminjaman p 
 		JOIN pengguna pg ON p.created_by=pg.id 
 		JOIN pasien pas ON p.no_rm=pas.no_rm
-		where tanggal_harus_kembali >= '$now'")->result_array();
+		where tanggal_harus_kembali <= '$now'")->result_array();
 		foreach ($list as $d) {
 			// echo $d['no_rm']."<br>";
 			// echo $d['nama']."<br>";
