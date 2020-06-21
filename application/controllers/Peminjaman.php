@@ -35,7 +35,16 @@ class Peminjaman extends CI_Controller {
 		$data['type'] = 'Tambah';
 		$this->load->view('backend/index',$data);
 	}
-
+	public function terlambat(){
+		$data['title'] = "Data $this->cap Terlambat";
+		$data['content'] = "$this->low/index";
+		$where = " WHERE DATE(pem.tanggal_harus_kembali) < DATE(NOW())";
+		if ($_SESSION['userlevel'] == 4) {
+			$where.=" AND pem.created_by= $_SESSION[userid]";
+		}
+		$data['data'] = $this->db->query("SELECT p.nama, pem.* FROM $this->low pem JOIN pengguna p ON pem.created_by=p.id $where")->result_array();
+        $this->load->view('backend/index',$data);
+	}
 	public function store(){
 		$d = $_POST;
 		try{
@@ -44,7 +53,7 @@ class Peminjaman extends CI_Controller {
 				'no_rm' => $this->input->post('no_rm'), 
 				'keperluan' => $this->input->post('keperluan'), 
 				'keterangan' => $this->input->post('keterangan'), 
-				'tanggal_harus_kembali' => date('Y-m-d', strtotime("+1 days")), 
+				'tanggal_harus_kembali' => date('Y-m-d', strtotime("+2 days")), 
 				'created_by' => $_SESSION['userid'],
 			];
             $this->db->insert("$this->low",$arr);

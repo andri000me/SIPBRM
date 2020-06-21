@@ -93,6 +93,9 @@
                         <a class="nav-link" href="<?=base_url('peminjaman')?>">Peminjaman</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="<?=base_url('peminjaman/terlambat')?>">Terlambat</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="<?=base_url('pengembalian')?>">Pengembalian</a>
                     </li>
                     <?php } ?>
