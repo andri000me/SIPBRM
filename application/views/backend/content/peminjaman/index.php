@@ -3,7 +3,13 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
         <div class="card-body">
-            <h4 class="card-title"><?=$title?> <a href="<?php echo base_url($this->uri->segment(1)); ?>/add"><button class="btn btn-primary btn-sm pull-right">Peminjaman Baru <span class="fa fa-plus"></span></button></a><br><br /></h4>
+            <h4 class="card-title"><?=$title?> 
+            <?php 
+            if($this->uri->segment(2) == ""){
+            ?>
+            <a href="<?php echo base_url($this->uri->segment(1)); ?>/add"><button class="btn btn-primary btn-sm pull-right">Peminjaman Baru <span class="fa fa-plus"></span></button></a><br><br />
+            <?php } ?>
+            </h4>
             <?php Response_Helper::part('alert')?>
             <div class="table-responsive">
             <table class="table table-striped">
