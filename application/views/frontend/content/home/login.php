@@ -7,9 +7,9 @@
             <form action="<?= base_url('apps/doLogin')?>" method="post" class="mt-4" >
                 <?php Response_Helper::part('alert')?>
                 <div class="form-group">
-                  <label class="label">Email</label>
+                  <label class="label">Username</label>
                   <div class="input-group">
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" value="<?= Input_helper::postOrOr('email') ?>">
+                    <input type="text" class="form-control" id="email" name="email" placeholder="Enter your username" value="<?= Input_helper::postOrOr('email') ?>">
                     <div class="input-group-append">
                       <span class="input-group-text">
                         <i class="mdi mdi-check-circle-outline"></i>

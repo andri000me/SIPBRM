@@ -28,7 +28,7 @@ class Dashboard extends CI_Controller {
   	}
 	public function index()
 	{
-		$data['title'] = "Ebeca - Dashboard Ebeca";
+		$data['title'] = "Berkas - Dashboard Berkas";
 		$data['content'] = "dashboard/index";
 		$data['buku'] = [];
 		$data['pinjam'] = $this->db->get("peminjaman")->result_array();

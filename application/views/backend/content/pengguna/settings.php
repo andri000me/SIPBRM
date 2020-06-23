@@ -108,7 +108,7 @@
     <div class="col-6 grid-margin">
         <div class="card">
             <div class="card-body">
-            <h4 class="card-title">Ebeca - Download Kartu</h4>
+            <h4 class="card-title">Berkas - Download Kartu</h4>
             <a href='<?=base_url('akun/kartuPeserta/'.$data['nik'])?>' target="_blank">
                 <button type="button" class="btn btn-outline-success btn-fw">
                 <i class="mdi mdi-download"></i>Download</button>

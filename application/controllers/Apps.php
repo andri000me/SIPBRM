@@ -74,13 +74,13 @@ class Apps extends CI_Controller {
         }
         try {
             if($d){
-                $a = $this->db->get_where("pengguna", ['email' => $d['email']])->result_array();
+                $a = $this->db->get_where("pengguna", ['nama' => $d['email']])->result_array();
                 // print_r($a);
                 // echo count($a);
                 // $a = $this->akun->Select('*', "WHERE email = '$d[email]'")[1];
 
                 if(count($a) < 1) {
-                    $this->session->set_flashdata("message", ['danger', 'Login gagal, silahkan cek email anda kembali', ' Gagal']);
+                    $this->session->set_flashdata("message", ['danger', 'Login gagal, silahkan cek username anda kembali', ' Gagal']);
                     return $this->index();
                 }
 
@@ -125,22 +125,22 @@ class Apps extends CI_Controller {
 		$app = $this->setting();
 		if(strlen($nik) < 16 || strlen($nik) > 16){
 			$this->session->set_flashdata("message", ['danger', 'Nik Harus Memiliki 16 digit']);
-			Response_helper::render("frontend/index", ['title' => "Ebeca - Halaman Register", 'app' => $app, 'content' => 'home/register', 'url' => $this->uri->segment(2), 'captcha' => $rand]);
+			Response_helper::render("frontend/index", ['title' => "Berkas - Halaman Register", 'app' => $app, 'content' => 'home/register', 'url' => $this->uri->segment(2), 'captcha' => $rand]);
 		}else if($jumlahNik > 0){
 			$this->session->set_flashdata("message", ['danger', 'Nik Anda Sudah Terpakai']);
-			Response_helper::render("frontend/index", ['title' => "Ebeca - Halaman Register", 'app' => $app, 'content' => 'home/register', 'url' => $this->uri->segment(2), 'captcha' => $rand]);
+			Response_helper::render("frontend/index", ['title' => "Berkas - Halaman Register", 'app' => $app, 'content' => 'home/register', 'url' => $this->uri->segment(2), 'captcha' => $rand]);
 		}else if($jumlahEmail > 0){
 			$this->session->set_flashdata("message", ['danger', 'Email Anda Sudah Terpakai']);
-			Response_helper::render("frontend/index", ['title' => "Ebeca - Halaman Register", 'app' => $app, 'content' => 'home/register', 'url' => $this->uri->segment(2), 'captcha' => $rand]);
+			Response_helper::render("frontend/index", ['title' => "Berkas - Halaman Register", 'app' => $app, 'content' => 'home/register', 'url' => $this->uri->segment(2), 'captcha' => $rand]);
 		}else if(!$uppercase || !$lowercase || !$number || strlen($password)<=6){
 			$this->session->set_flashdata("message", ['danger', 'password harus lebih dari 6 karakter, mengandung huruf BESAR, huruf kecil dan angka']);
-			Response_helper::render("frontend/index", ['title' => "Ebeca - Halaman Register", 'app' => $app, 'content' => 'home/register', 'url' => $this->uri->segment(2), 'captcha' => $rand]);
+			Response_helper::render("frontend/index", ['title' => "Berkas - Halaman Register", 'app' => $app, 'content' => 'home/register', 'url' => $this->uri->segment(2), 'captcha' => $rand]);
 		}else if($password != $password_konfirmasi){
 			$this->session->set_flashdata("message", ['danger', 'Password tidak sama dengan password konfirmasi ']);
-			Response_helper::render("frontend/index", ['title' => "Ebeca - Halaman Register", 'app' => $app, 'content' => 'home/register', 'url' => $this->uri->segment(2), 'captcha' => $rand]);
+			Response_helper::render("frontend/index", ['title' => "Berkas - Halaman Register", 'app' => $app, 'content' => 'home/register', 'url' => $this->uri->segment(2), 'captcha' => $rand]);
 		}else if($d['captcha'] != $d['cHidden']){
 			$this->session->set_flashdata("message", ['danger', 'Captcha anda tidak valid']);
-			Response_helper::render("frontend/index", ['title' => "Ebeca - Halaman Register", 'app' => $app, 'content' => 'home/register', 'url' => $this->uri->segment(2), 'captcha' => $rand]);
+			Response_helper::render("frontend/index", ['title' => "Berkas - Halaman Register", 'app' => $app, 'content' => 'home/register', 'url' => $this->uri->segment(2), 'captcha' => $rand]);
 		}else{
 			$arr = [
 			  'nik' => $d['nik'], 
@@ -233,7 +233,7 @@ class Apps extends CI_Controller {
 		$data['kategori'] = $this->db->get("kategori")->result_array();
 		$data['pengarang'] = $this->db->get("pengarang")->result_array();
 		$data['penerbit'] = $this->db->get("penerbit")->result_array();
-		$data['title'] = "Ebeca - Halaman Filter";
+		$data['title'] = "Berkas - Halaman Filter";
 		$data['content'] = "home/filter";
 		$data['action'] = 'Filter';
 		$data['url'] = $this->uri->segment(2);

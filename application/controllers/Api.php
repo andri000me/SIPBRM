@@ -68,7 +68,7 @@ class Api extends CI_Controller {
         $password = $data[1];
         
         try {
-                $a = $this->db->get_where("pengguna", ['email' => $email])->result_array();
+                $a = $this->db->get_where("pengguna", ['nama' => $email])->result_array();
                 // print_r($a);
                 // echo count($a);
                 // $a = $this->akun->Select('*', "WHERE email = '$d[email]'")[1];
