@@ -96,6 +96,7 @@ class Apps extends CI_Controller {
 
                 $_SESSION['userid'] = $a['id'];
                 $_SESSION['userlevel'] = $a['level'];
+                $_SESSION['nama'] = $a['nama'];
                 redirect(base_url("dashboard"));
             }
         }

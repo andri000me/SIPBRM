@@ -19,7 +19,7 @@ class Peminjaman extends CI_Controller {
 		$data['title'] = "Data $this->cap";
 		$data['content'] = "$this->low/index";
 		$where = "";
-		if ($_SESSION['userlevel'] == 4) {
+		if ($_SESSION['userlevel'] == 3) {
 			$where.=" WHERE pem.created_by= $_SESSION[userid]";
 		}
 		$data['data'] = $this->db->query("SELECT p.nama, pem.* FROM $this->low pem JOIN pengguna p ON pem.created_by=p.id $where")->result_array();

@@ -8,16 +8,11 @@
     </a>
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-center">
-    <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
-        <li class="nav-item active">
-        <a href="#" class="nav-link">
-            <i class="mdi mdi-elevation-rise"></i>Reports</a>
-        </li>
-    </ul>
+    
     <ul class="navbar-nav navbar-nav-right">
         <li class="nav-item dropdown d-none d-xl-inline-block">
         <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-            <span class="profile-text">Hello, Ludfi !</span>
+            <span class="profile-text">Hello, <?= $_SESSION['nama'] ?> !</span>
             <img class="img-xs rounded-circle" src="<?=base_url('assets/')?>images/faces/face1.jpg" alt="Profile image">
         </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">

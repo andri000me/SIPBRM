@@ -31,10 +31,10 @@ class Dashboard extends CI_Controller {
 		$data['title'] = "Ebeca - Dashboard Ebeca";
 		$data['content'] = "dashboard/index";
 		$data['buku'] = [];
-		$data['pinjam'] = [];
+		$data['pinjam'] = $this->db->get("peminjaman")->result_array();
 		$data['telat'] = [];
-		$data['anggota'] = null;
-		$data['view'] = [];
+		$data['pengguna'] = $this->db->get("pengguna")->result_array();
+		$data['pasien'] = $this->db->get("pasien")->result_array();
 		$this->load->view('backend/index',$data);
 	}
 }

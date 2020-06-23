@@ -7,9 +7,9 @@
                 <img src="<?=base_url('assets/')?>images/faces/face1.jpg" alt="profile image">
             </div>
             <div class="text-wrapper">
-                <p class="profile-name">Ludfi</p>
+                <p class="profile-name"><?= $_SESSION['nama'] ?></p>
                 <div>
-                <small class="designation text-muted"><?=($_SESSION['userlevel'] == 1 ? 'Super Admin' : 'Admin')?></small>
+                <small class="designation text-muted"><?=LEVEL[$_SESSION['userlevel']]?></small>
                 <span class="status-indicator online"></span>
                 
                 </div>
@@ -38,19 +38,19 @@
         <?php } 
         if (in_array($_SESSION['userlevel'], [1, 2])) {
         ?>
-        <li class="nav-item <?= ($this->uri->segment(1) == "poli" ? 'active' : '') ?>">
+        <!-- <li class="nav-item <?= ($this->uri->segment(1) == "poli" ? 'active' : '') ?>">
             <a class="nav-link" href="<?=base_url('poli')?>">
                 <i class="menu-icon mdi mdi-format-list-bulleted"></i>
                 <span class="menu-title">Poli</span>
             </a>
-        </li>
-        <li class="nav-item <?= ($this->uri->segment(1) == "dokter" ? 'active' : '') ?>">
+        </li> -->
+        <!-- <li class="nav-item <?= ($this->uri->segment(1) == "dokter" ? 'active' : '') ?>">
             <a class="nav-link" href="<?=base_url('dokter')?>">
                 <i class="menu-icon mdi mdi-account-network"></i>
                 <span class="menu-title">Dokter</span>
             </a>
-        </li>
-        <li class="nav-item <?= ($this->uri->segment(1) == "pendidikan" ? 'active' : '') ?>">
+        </li> -->
+        <!-- <li class="nav-item <?= ($this->uri->segment(1) == "pendidikan" ? 'active' : '') ?>">
             <a class="nav-link" href="<?=base_url('pendidikan')?>">
                 <i class="menu-icon mdi mdi-book"></i>
                 <span class="menu-title">Pendidikan</span>
@@ -67,11 +67,11 @@
                 <i class="menu-icon mdi mdi-account-network"></i>
                 <span class="menu-title">Agama</span>
             </a>
-        </li>
+        </li> -->
         <?php } 
         
-        if (in_array($_SESSION['userlevel'], [1, 3, 4, 5])) {
-            if (in_array($_SESSION['userlevel'], [1, 3])) {
+        if (in_array($_SESSION['userlevel'], [1, 3, 4, 5, 2])) {
+            if (in_array($_SESSION['userlevel'], [1, 3, 2])) {
         ?>
         <li class="nav-item <?= ($this->uri->segment(1) == "pasien" ? 'active' : '') ?>">
             <a class="nav-link" href="<?=base_url('pasien')?>">
@@ -88,9 +88,9 @@
             </a>
             <div class="collapse" id="peminjaman">
                 <ul class="nav flex-column sub-menu">
-                <?php if (in_array($_SESSION['userlevel'], [4, 1])) { ?>
+                <?php if (in_array($_SESSION['userlevel'], [4, 1, 2, 3])) { ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=base_url('peminjaman')?>">Peminjaman</a>
+                        <a class="nav-link" href="<?=base_url('peminjaman')?>">Pengambilan</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?=base_url('peminjaman/terlambat')?>">Terlambat</a>
@@ -98,7 +98,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?=base_url('pengembalian')?>">Pengembalian</a>
                     </li>
-                    <?php } ?>
+                    
+                    <?php }  ?>
                 </ul>
             </div>
         </li>

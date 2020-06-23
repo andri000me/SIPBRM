@@ -18,7 +18,7 @@ class Pengembalian extends CI_Controller {
 		$data['title'] = "Data $this->cap";
 		$data['content'] = "$this->low/index";
 		$where = "";
-		if ($_SESSION['userlevel'] == 4) {
+		if ($_SESSION['userlevel'] == 3) {
 			$where.=" WHERE pem.created_by= $_SESSION[userid]";
 		}
 		$data['data'] = $this->db->query("SELECT p.id, pg.nama, p.keterangan, p.created_at FROM $this->low p 
