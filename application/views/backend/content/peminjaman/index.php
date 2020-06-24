@@ -7,7 +7,7 @@
             <?php 
             if($this->uri->segment(2) == ""){
             ?>
-            <a href="<?php echo base_url($this->uri->segment(1)); ?>/add"><button class="btn btn-primary btn-sm pull-right">Peminjaman Baru <span class="fa fa-plus"></span></button></a><br><br />
+            <a href="<?php echo base_url($this->uri->segment(1)); ?>/add"><button class="btn btn-primary btn-sm pull-right">Pengambilan Baru <span class="fa fa-plus"></span></button></a><br><br />
             <?php } ?>
             </h4>
             <?php Response_Helper::part('alert')?>
@@ -20,7 +20,7 @@
                     if (in_array($_SESSION['userid'] , [1, 2])) {?>
                         <th>Nama Peminjam</th>
                     <?php } ?>
-                    <th>Tanggal Pinjam</th>
+                    <th>Tanggal Ambil</th>
                     <th>Status</th>
                     <th>Tanggal Harus Kembali</th><th>Aksi</th>
                 </tr>

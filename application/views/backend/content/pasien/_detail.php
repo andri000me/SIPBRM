@@ -35,25 +35,7 @@
                     <h5><?= Input_helper::postOrOr('telp', $data['telp']) ?></h5>
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label class="col-form-label">Agama</label>
-                    <h5><?= Input_helper::postOrOr('agama', $data['agama']) ?></h5>
-                </div>
-              </div>
               
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label class="col-form-label">Pendidikan</label>
-                    <h5><?= Input_helper::postOrOr('pendidikan', $data['pendidikan']) ?></h5>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label class="col-form-label">Pekerjaan</label>
-                    <h5><?= Input_helper::postOrOr('pekerjaan', $data['pekerjaan']) ?></h5>
-                </div>
-              </div>
 
               <div class='col-md-12'>
                 <div class='form-group'>

@@ -16,7 +16,7 @@
             </div>
             </div>
             <a href="<?=base_url('peminjaman/add')?>">
-                <button class="btn btn-success btn-block">Peminjaman Baru
+                <button class="btn btn-success btn-block">Pengambilan Baru
                 <i class="mdi mdi-plus"></i>
                 </button>
             </a>

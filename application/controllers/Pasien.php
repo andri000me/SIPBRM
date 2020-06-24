@@ -70,10 +70,10 @@ class Pasien extends CI_Controller {
 		$data['title'] = "Detail $this->cap";
 		$data['content'] = "$this->low/_detail";
 		$data['type'] = 'Ubah';
-		$data['data'] = $this->db->query("SELECT p.*, d.name as desa, k.name as kecamatan, kab.name as kabupaten, prov.name as provinsi, a.nama as agama, pen.nama as pendidikan, pek.nama as pekerjaan FROM $this->low p 
+		$data['data'] = $this->db->query("SELECT p.*, d.name as desa, k.name as kecamatan, kab.name as kabupaten, prov.name as provinsi FROM $this->low p 
 		join desa d ON p.id_desa=d.id JOIN kecamatan k ON d.kecamatan_id=k.id 
 		JOIN kabupaten kab ON k.kabupaten_id=kab.id JOIN provinsi prov ON kab.provinsi_id=prov.id
-		JOIN agama a ON p.id_agama=a.id JOIN pendidikan pen ON p.id_pendidikan=pen.id JOIN pekerjaan pek ON p.id_pekerjaan = pek.id")->row_array();		
+		")->row_array();		
 		$this->load->view('backend/index',$data);
 	}
 	

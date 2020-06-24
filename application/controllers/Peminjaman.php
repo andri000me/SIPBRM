@@ -5,7 +5,7 @@ class Peminjaman extends CI_Controller {
   	{
 		parent::__construct();
 		$this->low = "peminjaman";
-        $this->cap = "Peminjaman";
+        $this->cap = "Pengembalian";
 		$this->load->helper("Response_helper");
 		$this->load->helper("Input_helper");
 		date_default_timezone_set('Asia/Jakarta');
@@ -38,7 +38,7 @@ class Peminjaman extends CI_Controller {
 	public function terlambat(){
 		$data['title'] = "Data $this->cap Terlambat";
 		$data['content'] = "$this->low/index";
-		$where = " WHERE DATE(pem.tanggal_harus_kembali) < DATE(NOW())";
+		$where = " WHERE DATE(pem.tanggal_harus_kembali) < DATE(NOW()) AND pem.status=0";
 		if ($_SESSION['userlevel'] == 4) {
 			$where.=" AND pem.created_by= $_SESSION[userid]";
 		}
