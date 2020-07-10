@@ -34,7 +34,7 @@ class Dashboard extends CI_Controller {
 		$data['pinjam'] = $this->db->get("peminjaman")->result_array();
 		$data['telat'] = [];
 		$data['pengguna'] = $this->db->get("pengguna")->result_array();
-		$data['pasien'] = $this->db->get("pasien")->result_array();
+		$data['pasien'] = [];
 		$this->load->view('backend/index',$data);
 	}
 }

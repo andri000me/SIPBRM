@@ -46,7 +46,7 @@
         Dokumen
         <address>
           <strong><?= $data['nama']."[".$data['no_rm']."]" ?></strong><br>
-          <?= $data['alamat'] ?>
+          <?= $data['tanggal_lahir_pasien'] ?>
         </address>
       </div>
       <!-- /.col -->

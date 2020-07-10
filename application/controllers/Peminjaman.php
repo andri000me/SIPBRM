@@ -19,7 +19,7 @@ class Peminjaman extends CI_Controller {
 		$data['title'] = "Data $this->cap";
 		$data['content'] = "$this->low/index";
 		$where = "";
-		if ($_SESSION['userlevel'] == 3) {
+		if ($_SESSION['userlevel'] != 2) {
 			$where.=" WHERE pem.created_by= $_SESSION[userid]";
 		}
 		$data['data'] = $this->db->query("SELECT p.nama, pem.* FROM $this->low pem JOIN pengguna p ON pem.created_by=p.id $where")->result_array();
@@ -31,7 +31,6 @@ class Peminjaman extends CI_Controller {
 		$data['title'] = "Tambah $this->cap";
 		$data['content'] = "$this->low/_form";
         $data['data'] = null;
-        $data['provinsi'] = $this->db->get("provinsi")->result_array();
 		$data['type'] = 'Tambah';
 		$this->load->view('backend/index',$data);
 	}
@@ -51,6 +50,9 @@ class Peminjaman extends CI_Controller {
 			$arr =
 			[
 				'no_rm' => $this->input->post('no_rm'), 
+				'nama_pasien' => $this->input->post('nama_pasien'), 
+				'tanggal_lahir_pasien' => $this->input->post('tanggal_lahir_pasien'), 
+				'ruangan' => $this->input->post('ruangan'), 
 				'keperluan' => $this->input->post('keperluan'), 
 				'keterangan' => $this->input->post('keterangan'), 
 				'tanggal_harus_kembali' => date('Y-m-d', strtotime("+2 days")), 
@@ -85,7 +87,7 @@ class Peminjaman extends CI_Controller {
 	public function detail($id){
 		$data['title'] = "Ubah $this->cap";
 		$data['type'] = 'Detail';
-		$data['data'] = $this->db->query("SELECT pm.id, pm.no_rm, pm.keperluan, pm.keterangan, pm.tanggal_harus_kembali, pm.created_at, p.nama, p.alamat, pg.nama as peminjam, pg.email FROM `peminjaman` pm join pasien p ON pm.no_rm=p.no_rm JOIN pengguna pg ON pm.created_by=pg.id WHERE pm.id='$id'")->row_array();		
+		$data['data'] = $this->db->query("SELECT pm.id, pm.no_rm, pm.keperluan, pm.keterangan, pm.tanggal_harus_kembali, pm.created_at, pm.nama_pasien as nama, pm.tanggal_lahir_pasien, pg.nama as peminjam, pg.email FROM `peminjaman` pm JOIN pengguna pg ON pm.created_by=pg.id WHERE pm.id='$id'")->row_array();		
 		$this->load->view('backend/content/peminjaman/_detail',$data);
 	}
 	

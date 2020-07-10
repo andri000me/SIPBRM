@@ -29,8 +29,8 @@ class Pengembalian extends CI_Controller {
 	public function detail($id){
 		$data['title'] = "Ubah $this->cap";
 		$data['type'] = 'Detail';
-		$data['data'] = $this->db->query("SELECT pm.id as id_peminjaman, pgm.id as id_pengembalian, pgm.keterangan, pgm.created_at as tanggal_kembali, pm.no_rm, pm.keperluan, pm.keterangan, pm.tanggal_harus_kembali, pm.created_at, p.nama, p.alamat, 
-		pg.nama as peminjam, pg.email FROM `peminjaman` pm join pasien p ON pm.no_rm=p.no_rm JOIN pengguna pg ON pm.created_by=pg.id join pengembalian pgm ON pm.id=pgm.id_peminjaman WHERE pm.id='$id'")->row_array();		
+		$data['data'] = $this->db->query("SELECT pm.id as id_peminjaman, pgm.id as id_pengembalian, pgm.keterangan, pgm.created_at as tanggal_kembali, pm.no_rm, pm.keperluan, pm.keterangan, pm.tanggal_harus_kembali, pm.created_at, pm.nama_pasien as nama, pm.tanggal_lahir_pasien, 
+		pg.nama as peminjam, pg.email FROM `peminjaman` pm JOIN pengguna pg ON pm.created_by=pg.id join pengembalian pgm ON pm.id=pgm.id_peminjaman WHERE pm.id='$id'")->row_array();		
 		$this->load->view('backend/content/pengembalian/_detail',$data);
 		// print_r($data);
 	}
@@ -38,7 +38,7 @@ class Pengembalian extends CI_Controller {
 		$data['title'] = " $this->cap Berkas";
 		$data['content'] = "$this->low/_form";
 		$data['type'] = 'Ubah';
-		$data['provinsi'] = $this->db->get("provinsi")->result_array();
+		// $data['provinsi'] = $this->db->get("provinsi")->result_array();
 		$data['data'] = $this->db->get_where("peminjaman", ['id' => $id])->row_array();		
 		$this->load->view('backend/index',$data);
 	}

@@ -5,7 +5,7 @@
         <div class="card-body">
             <h4 class="card-title"><?=$title?> 
             <?php 
-            if($this->uri->segment(2) == ""){
+            if($this->uri->segment(2) == "" & ($_SESSION['userlevel'] != 1 && $_SESSION['userlevel'] != 2)){
             ?>
             <a href="<?php echo base_url($this->uri->segment(1)); ?>/add"><button class="btn btn-primary btn-sm pull-right">Pengambilan Baru <span class="fa fa-plus"></span></button></a><br><br />
             <?php } ?>
@@ -50,7 +50,7 @@
                             </button> 
                         </a>
                         <?php
-                        if($d['status'] == 0){
+                        if($d['status'] == 0 & ($_SESSION['userlevel'] != 2)){
                         ?>
                         <a href='<?=base_url("pengembalian"."/kembalikan/".$d['id'])?>'>
                             <button type="button" class="btn btn-sm btn-sms  btn-outline-primary" >

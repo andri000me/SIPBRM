@@ -86,6 +86,7 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 
 define("LEVEL", array('', 'Super Admin', 'Admin', 'TPPRI', 'Rawat Inap', 'Assembling'));
+define("BAYAR", array('', 'BPJS', 'LAINNYA', 'UMUM'));
 define("STATUS_PENGGUNA", array('Tidak Aktif', 'Aktif'));
 define("GENDER", array('Perempuan', 'Laki Laki'));
 define("TYPE_LOG", array('menghapus', 'menambah','edit', 'konfirmasi', 'menolak'));

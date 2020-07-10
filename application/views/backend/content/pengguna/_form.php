@@ -47,7 +47,7 @@
                       <option value="">Pilih Level</option>
                       <?php
                   $level = Input_Helper::postOrOr('level', $data['level']);
-                  for ($i=1; $i < count(LEVEL); $i++) {
+                  for ($i=2; $i < count(LEVEL); $i++) {
                   ?>
                     <option <?= ($level == $i ? "selected" : "")?> value="<?= $i ?>"><?= LEVEL[$i] ?></option>
                     <!-- <option selected="selected"><?= LEVEL[$i] ?></option> -->
