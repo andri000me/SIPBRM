@@ -15,14 +15,14 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
+              <!-- <div class="col-md-6">
                 <div class="form-group row">
                   <label class="col-sm-3 col-form-label">Email</label>
                   <div class="col-sm-9">
                     <input type="email" class="form-control" name='email' value="<?= Input_helper::postOrOr('email', $data['email']) ?>" placeholder='masukkan email' required/>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <div class="col-md-6">
                 <div class="form-group row">
                   <label class="col-sm-3 col-form-label">Password </label>

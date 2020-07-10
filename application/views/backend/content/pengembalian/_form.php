@@ -79,6 +79,7 @@
                 </div>
               </div>
             </div>
+            
             <div class='col-md-12 row'>
               <button class='btn btn-primary pull-right delete' type='submit'><?=$type?></button>
             </div>

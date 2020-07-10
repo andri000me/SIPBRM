@@ -18,7 +18,7 @@
             <?php 
             if($_SESSION['userlevel'] != 2 && $_SESSION['userlevel'] != 5){
             ?>
-            <a href="<?=base_url('peminjaman/add')?>">
+            <a href="<?=base_url('pengambilan/add')?>">
                 <button class="btn btn-success btn-block">Pengambilan Baru
                 <i class="mdi mdi-plus"></i>
                 </button>
@@ -26,12 +26,12 @@
             <?php } ?>
         </div>
         </li>
-        <li class="nav-item <?= ($this->uri->segment(1) == "dashboard" ? 'active' : '') ?>">
+        <!-- <li class="nav-item <?= ($this->uri->segment(1) == "dashboard" ? 'active' : '') ?>">
         <a class="nav-link" href="<?=base_url('dashboard')?>">
             <i class="menu-icon mdi mdi-television"></i>
             <span class="menu-title">Dashboard</span>
         </a>
-        </li>
+        </li> -->
         <?php if ($_SESSION['userlevel'] == 1 || $_SESSION['userlevel'] == 2) {?>
         <li class="nav-item  <?= ($this->uri->segment(1) == "pengguna" ? 'active' : '') ?>">
             <a class="nav-link" href="<?=base_url('pengguna')?>">
@@ -54,25 +54,25 @@
         </li>
         <?php } ?>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#peminjaman" aria-expanded="false" aria-controls="peminjaman">
+            <a class="nav-link" data-toggle="collapse" href="#pengambilan" aria-expanded="false" aria-controls="pengambilan">
                 <i class="menu-icon mdi mdi-content-copy"></i>
                 <span class="menu-title">Transaksi</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="peminjaman">
+            <div class="collapse" id="pengambilan">
                 <ul class="nav flex-column sub-menu">
                 <?php if (in_array($_SESSION['userlevel'], [4, 1, 2, 3, 5])) { 
                     if (in_array($_SESSION['userlevel'], [4, 1, 2, 3])) { 
                     ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=base_url('peminjaman')?>">Pengambilan</a>
+                        <a class="nav-link" href="<?=base_url('pengambilan')?>">Pengambilan</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=base_url('peminjaman/terlambat')?>">Terlambat</a>
+                        <a class="nav-link" href="<?=base_url('pengambilan/terlambat')?>">Ketidaktepatan Waktu <br>Pengembalian</a>
                     </li>
                     <?php }?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=base_url('pengembalian')?>">Pengembalian</a>
+                        <a class="nav-link" href="<?=base_url('pengembalian')?>">Laporan Pengembalian</a>
                     </li>
                     
                     <?php }  ?>

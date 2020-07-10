@@ -16,13 +16,13 @@
                 <thead>
                 <tr>
                     <th>No</th>
-                    <?php 
-                    if (in_array($_SESSION['userid'] , [1, 2])) {?>
-                        <th>Nama Peminjam</th>
-                    <?php } ?>
-                    <th>Tanggal Ambil</th>
+                    <th>Nama Peminjam</th>
+                    <th>Tanggal Lahir</th>
+                    <th>Ruangan</th>
                     <th>Status</th>
-                    <th>Tanggal Harus Kembali</th><th>Aksi</th>
+                    <th>Tanggal Ambil</th>
+                    <th>Tanggal Harus Kembali</th>
+                    <th>Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -36,19 +36,18 @@
                     ?>
                 <tr class='<?=(($tanggal_sekarang > $tanggal_kembali && $d['status'] == 0) ? "table-danger" : "")?>'>
                     <td><?=$no ?></td>
-                    <?php 
-                    if (in_array($_SESSION['userid'] , [1, 2])) {?>
-                    <td><?= $d['nama'] ?></td>
-                    <?php } ?>
-                    <td><?= $d['created_at'] ?></td>
+                    <td><?= $d['nama_pasien'].'['.$d['no_rm'].']' ?></td>
+                    <td><?= $d['tanggal_lahir_pasien'] ?></td>
+                    <td><?= $d['ruangan'] ?></td>
                     <td><?=($d['status'] == 0 ? 'belum dikembalikan' : 'sudah dikembalikan')?></td>
+                    <td><?= $d['created_at'] ?></td>
                     <td><?= $d['tanggal_harus_kembali'] ?></td>
                     <td>
-                         <a target="_blank" href='<?=base_url($this->uri->segment(1)."/detail/".$d['id'])?>'>
+                         <!-- <a target="_blank" href='<?=base_url($this->uri->segment(1)."/detail/".$d['id'])?>'>
                             <button type="button" class="btn btn-sm btn-sms btn-icons btn-rounded btn-outline-warning">
                             <i class="mdi mdi-book"></i>
                             </button> 
-                        </a>
+                        </a> -->
                         <?php
                         if($d['status'] == 0 & ($_SESSION['userlevel'] != 2)){
                         ?>

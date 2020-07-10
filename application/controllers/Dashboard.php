@@ -35,6 +35,7 @@ class Dashboard extends CI_Controller {
 		$data['telat'] = [];
 		$data['pengguna'] = $this->db->get("pengguna")->result_array();
 		$data['pasien'] = [];
+		redirect(base_url().'pengguna');
 		$this->load->view('backend/index',$data);
 	}
 }

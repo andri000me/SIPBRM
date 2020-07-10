@@ -18,11 +18,11 @@ class Pengembalian extends CI_Controller {
 		$data['title'] = "Data $this->cap";
 		$data['content'] = "$this->low/index";
 		$where = "";
-		if ($_SESSION['userlevel'] == 3) {
-			$where.=" WHERE pem.created_by= $_SESSION[userid]";
-		}
-		$data['data'] = $this->db->query("SELECT p.id, pg.nama, p.keterangan, p.created_at FROM $this->low p 
-		JOIN pengguna pg ON p.created_by=pg.id JOIN peminjaman pem ON p.id_peminjaman=pem.id $where")->result_array();
+		// if ($_SESSION['userlevel'] == 3) {
+		// 	$where.=" WHERE pem.created_by= $_SESSION[userid]";
+		// }
+		$data['data'] = $this->db->query("SELECT p.id, pg.nama, p.created_at, pem.* FROM $this->low p 
+		JOIN pengguna pg ON p.created_by=pg.id JOIN pengambilan pem ON p.id_pengambilan=pem.id $where")->result_array();
         $this->load->view('backend/index',$data);
     }
 	
@@ -49,6 +49,7 @@ class Pengembalian extends CI_Controller {
 			[
 				'id_peminjaman' => $id, 
 				'keterangan' => $this->input->post('keterangan'), 
+				// // 'tanggal_pulang' => $this->input->post('tanggal_pulang'), 
 				'created_at' => date('Y-m-d H:i:s'),
 				'created_by' => $_SESSION['userid']	
 			];

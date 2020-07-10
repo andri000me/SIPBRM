@@ -21,9 +21,6 @@
                     <th>Ruangan</th>
                     <th>Tanggal Harus kembali</th>
                     <th>Tanggal Pengembalian</th>
-                    <?php if($_SESSION['userlevel'] == 5){?>
-                    <th>Aksi</th>
-                    <?php }?>
                 </tr>
                 </thead>
                 <tbody>
@@ -39,15 +36,7 @@
                     <td><?= $d['tanggal_harus_kembali'] ?></td>
                     <!-- <td><?= $d['tanggal_kembali'] ?></td> -->
                     <td><?= $d['created_at'] ?></td>
-                    <?php if($_SESSION['userlevel'] == 5){?>
-                    <td>
-                        <a target="_blank" href='<?=base_url($this->uri->segment(1)."/detail/".$d['id'])?>'>
-                            <button type="button" class="btn btn-sm btn-sms btn-icons btn-rounded btn-outline-warning">
-                            <i class="mdi mdi-book"></i>
-                            </button> 
-                        </a>
-                    </td>
-                    <?php } ?>
+                    
                 </tr>
                     <?php $no++; }?>
                 </tbody>

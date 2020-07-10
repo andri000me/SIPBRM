@@ -73,7 +73,7 @@ class Api extends CI_Controller {
                 // echo count($a);
                 // $a = $this->akun->Select('*', "WHERE email = '$d[email]'")[1];
                 if(count($a) < 1) {
-                    $response = ["message" => 'Login gagal, silahkan cek email anda kembali'];
+                    $response = ["message" => 'Login gagal, silahkan cek username anda kembali'];
                 }else{
                     $a = $a[0];
                     if($a['status'] == 0) {
@@ -83,7 +83,7 @@ class Api extends CI_Controller {
                             $response = ["message" => 'Login gagal, Password anda salah'];
                         }else{
                             $chat_id = $data[2];
-                            $this->db->update("pengguna", ['chat_id' => $chat_id], ['email' => $email]);
+                            $this->db->update("pengguna", ['chat_id' => $chat_id], ['nama' => $email]);
                             $response = ["message" => 'Login Berhasil', 'data' => $a];
                         }
                        

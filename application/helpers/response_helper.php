@@ -14,7 +14,9 @@ class Response_helper
 		$CI =& get_instance();
 		$token = "1048537149:AAEjn0E8xMhUGna-q48mtk0-M3GfDxcT-_I";
 		$now = date("Y-m-d H:i:s");
-		// echo "SELECT * FROM peminjaman where tanggal_harus_kembali >= '$now'";
+		// echo "SELECT p.*, pg.chat_id, p.nama_pasien FROM peminjaman p 
+		// JOIN pengguna pg ON p.created_by=pg.id 
+		// where tanggal_harus_kembali <= '$now'";
 		$list = $CI->db->query("SELECT p.*, pg.chat_id, p.nama_pasien FROM peminjaman p 
 		JOIN pengguna pg ON p.created_by=pg.id 
 		where tanggal_harus_kembali <= '$now'")->result_array();

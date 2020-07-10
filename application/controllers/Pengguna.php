@@ -37,7 +37,7 @@ class Pengguna extends CI_Controller {
 			$arr =
 			[
 				'nama' => $this->input->post('nama'), 
-				'email' => $this->input->post('email'), 
+				// 'email' => $this->input->post('email'), 
 				'level' => $this->input->post('level'), 
 				'created_by' => $_SESSION['userid'],  
 				'status' => $this->input->post('status')
@@ -73,7 +73,7 @@ class Pengguna extends CI_Controller {
 			$arr =
 			[
 				'nama' => $this->input->post('nama'), 
-				'email' => $this->input->post('email'), 
+				// 'email' => $this->input->post('email'), 
 				'level' => $this->input->post('level'), 
 				'status' => $this->input->post('status'),
 				'updated_at' => date('Y-m-d H:i:s'),

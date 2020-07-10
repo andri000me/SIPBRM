@@ -50,14 +50,17 @@
                 </div>
               </div>
             </div>
+            <p class="card-description">
+            Tanggal Pasien Pulang
+            </p>
             <div class="row">
-              <div class="col-md-6">
-                <p class="card-description">keperluan</p>
-                  <textarea class='form-control' rows='8' name='keperluan' placeholder='masukkan keperluan' name='keperluan' required><?= Input_helper::postOrOr('keperluan', $data['keperluan']) ?></textarea>
-              </div>
-              <div class="col-md-6">
-                <p class="card-description">keterangan</p>
-                  <textarea class='form-control' rows='8' name='keterangan' placeholder='masukkan keperluan' name='keperluan' required><?= Input_helper::postOrOr('keperluan', $data['keperluan']) ?></textarea>
+              <div class="col-md-12">
+                <div class="form-group row">
+                  <!-- <label class="col-sm-3 col-form-label">Address 1</label> -->
+                  <div class="col-sm-12">
+                    <input type="date" class="form-control" name="tanggal_pulang" required>
+                  </div>
+                </div>
               </div>
             </div>
             <div class='col-md-12 row'>

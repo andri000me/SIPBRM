@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Peminjaman extends CI_Controller {
+class Pengambilan extends CI_Controller {
 	function __construct()
   	{
 		parent::__construct();
-		$this->low = "peminjaman";
-        $this->cap = "Pengembalian";
+		$this->low = "pengambilan";
+        $this->cap = "Pengambilan";
 		$this->load->helper("Response_helper");
 		$this->load->helper("Input_helper");
 		date_default_timezone_set('Asia/Jakarta');
@@ -46,6 +46,8 @@ class Peminjaman extends CI_Controller {
 	}
 	public function store(){
 		$d = $_POST;
+		// echo $this->input->post('tanggal_pulang');
+		// echo date("Y-m-d", strtotime($this->input->post('tanggal_pulang'). "+2 days"));
 		try{
 			$arr =
 			[
@@ -53,9 +55,10 @@ class Peminjaman extends CI_Controller {
 				'nama_pasien' => $this->input->post('nama_pasien'), 
 				'tanggal_lahir_pasien' => $this->input->post('tanggal_lahir_pasien'), 
 				'ruangan' => $this->input->post('ruangan'), 
-				'keperluan' => $this->input->post('keperluan'), 
-				'keterangan' => $this->input->post('keterangan'), 
-				'tanggal_harus_kembali' => date('Y-m-d', strtotime("+2 days")), 
+				'tanggal_pulang' => $this->input->post('tanggal_pulang'), 
+				// 'keperluan' => $this->input->post('keperluan'), 
+				// 'keterangan' => $this->input->post('keterangan'), 
+				'tanggal_harus_kembali' => date("Y-m-d", strtotime($this->input->post('tanggal_pulang'). "+2 days")), 
 				'created_by' => $_SESSION['userid'],
 			];
             $this->db->insert("$this->low",$arr);
@@ -87,7 +90,7 @@ class Peminjaman extends CI_Controller {
 	public function detail($id){
 		$data['title'] = "Ubah $this->cap";
 		$data['type'] = 'Detail';
-		$data['data'] = $this->db->query("SELECT pm.id, pm.no_rm, pm.keperluan, pm.keterangan, pm.tanggal_harus_kembali, pm.created_at, pm.nama_pasien as nama, pm.tanggal_lahir_pasien, pg.nama as peminjam, pg.email FROM `peminjaman` pm JOIN pengguna pg ON pm.created_by=pg.id WHERE pm.id='$id'")->row_array();		
+		$data['data'] = $this->db->query("SELECT pm.id, pm.no_rm,  pm.tanggal_harus_kembali, pm.created_at, pm.nama_pasien as nama, pm.tanggal_lahir_pasien, pg.nama as peminjam, pg.email FROM `peminjaman` pm JOIN pengguna pg ON pm.created_by=pg.id WHERE pm.id='$id'")->row_array();		
 		$this->load->view('backend/content/peminjaman/_detail',$data);
 	}
 	
