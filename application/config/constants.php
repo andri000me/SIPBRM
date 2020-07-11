@@ -89,5 +89,6 @@ define("LEVEL", array('', 'Super Admin', 'Admin', 'TPPRI', 'Rawat Inap', 'Assemb
 define("BAYAR", array('', 'BPJS', 'LAINNYA', 'UMUM'));
 define("STATUS_PENGGUNA", array('Tidak Aktif', 'Aktif'));
 define("GENDER", array('Perempuan', 'Laki Laki'));
+define("STATUS_TERIMA", array('Belum Diterima', 'Sudah Diterima'));
 define("TYPE_LOG", array('menghapus', 'menambah','edit', 'konfirmasi', 'menolak'));
 define("TYPE_LOG_COLOR", array('red', 'blue','yellow', 'green', 'maroon-gradient'));

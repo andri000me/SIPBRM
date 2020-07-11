@@ -37,11 +37,11 @@ class Pengambilan extends CI_Controller {
 	public function terlambat(){
 		$data['title'] = "Data $this->cap Terlambat";
 		$data['content'] = "$this->low/index";
-		$where = " WHERE DATE(pem.tanggal_harus_kembali) < DATE(NOW()) AND pem.status=0";
-		if ($_SESSION['userlevel'] == 4) {
-			$where.=" AND pem.created_by= $_SESSION[userid]";
-		}
-		$data['data'] = $this->db->query("SELECT p.nama, pem.* FROM $this->low pem JOIN pengguna p ON pem.created_by=p.id $where")->result_array();
+		$where = " WHERE DATE(pe.tanggal_harus_kembali) < DATE(NOW()) AND pe.status=0";
+		// if ($_SESSION['userlevel'] == 4) {
+		// 	$where.=" AND pem.created_by= $_SESSION[userid]";
+		// }
+		$data['data'] = $this->db->query("SELECT p.nama, pem.* FROM $this->low pem JOIN pengembalian pe ON pem.id=pe.id_pengambilan JOIN pengguna p ON pem.created_by=p.id $where")->result_array();
         $this->load->view('backend/index',$data);
 	}
 	public function getRmData($id){
@@ -59,7 +59,7 @@ class Pengambilan extends CI_Controller {
 				'nama_pasien' => $this->input->post('nama_pasien'), 
 				'tanggal_lahir_pasien' => $this->input->post('tanggal_lahir_pasien'), 
 				'ruangan' => $this->input->post('ruangan'), 
-				'tanggal_harus_kembali' => date("Y-m-d", strtotime($this->input->post('tanggal_pulang'). "+2 days")), 
+				
 				'created_by' => $_SESSION['userid'],
 			];
             $this->db->insert("$this->low",$arr);

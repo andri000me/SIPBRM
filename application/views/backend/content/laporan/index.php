@@ -19,6 +19,7 @@
                     <th>Nama Pasien[no rm]</th>
                     <th>Tanggal Lahir</th>
                     <th>Ruangan</th>
+                    <th>Tanggal Pengambilan</th>
                     <th>Tanggal Harus kembali</th>
                     <th>Tanggal Pengembalian</th>
                 </tr>
@@ -33,8 +34,8 @@
                     <td><?= $d['nama_pasien']."[".$d['no_rm']."]" ?></td>
                     <td><?= $d['tanggal_lahir_pasien'] ?></td>
                     <td><?= $d['ruangan'] ?></td>
+                    <td><?= $d['tanggal_pengambilan'] ?></td>
                     <td><?= $d['tanggal_harus_kembali'] ?></td>
-                    <!-- <td><?= $d['tanggal_kembali'] ?></td> -->
                     <td><?= $d['created_at'] ?></td>
                     
                 </tr>

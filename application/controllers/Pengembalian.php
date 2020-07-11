@@ -21,7 +21,7 @@ class Pengembalian extends CI_Controller {
 		// if ($_SESSION['userlevel'] == 3) {
 		// 	$where.=" WHERE pem.created_by= $_SESSION[userid]";
 		// }
-		$data['data'] = $this->db->query("SELECT p.id, pg.nama, p.created_at, pem.* FROM $this->low p 
+		$data['data'] = $this->db->query("SELECT p.*, pg.nama, p.created_at, pem.nama_pasien, pem.no_rm, pem.tanggal_lahir_pasien, pem.ruangan, p.tanggal_harus_kembali FROM pengembalian p 
 		JOIN pengguna pg ON p.created_by=pg.id JOIN pengambilan pem ON p.id_pengambilan=pem.id $where")->result_array();
         $this->load->view('backend/index',$data);
     }
@@ -50,6 +50,11 @@ class Pengembalian extends CI_Controller {
 		$data['data'] = $this->db->get_where("pengembalian", ['id' => $id])->row_array();		
 		$this->load->view('backend/index',$data);
 	}
+	public function status($id){
+		$this->db->update("$this->low", ['status' => 1], ['id' => $id]);
+		$this->session->set_flashdata("message", ['success', "Berhasil Update Status", ' Berhasil']);
+		redirect(base_url("$this->low/"));
+	}
 	public function simpan(){
 		$d = $_POST;
 		try{
@@ -58,8 +63,9 @@ class Pengembalian extends CI_Controller {
 				'id_pengambilan' => $this->input->post("id_pengambilan"), 
 				'status' => 0, 
 				'tanggal_pulang' => $this->input->post('tanggal_pulang'), 
+				'created_at' => $this->input->post('tanggal_kembali'), 
+				'tanggal_harus_kembali' => date("Y-m-d", strtotime($this->input->post('tanggal_kembali'). "+2 days")), 
 				'bayar' => $this->input->post('bayar'), 
-				'created_at' => date('Y-m-d H:i:s'),
 				'created_by' => $_SESSION['userid']	
 			];
 			$this->session->set_flashdata("message", ['success', "$this->cap Berhasil", ' Berhasil']);

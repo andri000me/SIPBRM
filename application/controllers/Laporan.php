@@ -19,7 +19,7 @@ class Laporan extends CI_Controller {
 		$data['title'] = "Data $this->cap";
 		$data['content'] = "$this->low/index";
 		$where = "";
-		$data['data'] = $this->db->query("SELECT * FROM pengambilan p JOIN pengembalian pem ON p.id=pem.id_pengambilan")->result_array();
+		$data['data'] = $this->db->query("SELECT pem.*, p.created_at tanggal_pengambilan, p.nama_pasien, p.no_rm, p.tanggal_lahir_pasien, p.ruangan FROM pengambilan p JOIN pengembalian pem ON p.id=pem.id_pengambilan")->result_array();
         $this->load->view('backend/index',$data);
     }
 	

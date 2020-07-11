@@ -46,8 +46,8 @@
         if (in_array($_SESSION['userlevel'], [1, 3, 4, 5, 2])) {
             if (in_array($_SESSION['userlevel'], [1, 2])) {
         ?>
-        <li class="nav-item <?= ($this->uri->segment(1) == "pasien" ? 'active' : '') ?>">
-            <a class="nav-link" href="<?=base_url('pasien')?>">
+        <li class="nav-item <?= ($this->uri->segment(1) == "laporan" ? 'active' : '') ?>">
+            <a class="nav-link" href="<?=base_url('laporan')?>">
                 <i class="menu-icon mdi mdi-book"></i>
                 <span class="menu-title">Laporan</span>
             </a>
@@ -62,7 +62,7 @@
             <div class="collapse" id="pengambilan">
                 <ul class="nav flex-column sub-menu">
                 <?php if (in_array($_SESSION['userlevel'], [4, 1, 2, 3, 5])) { 
-                    if (in_array($_SESSION['userlevel'], [1, 2, 3])) { 
+                    if (in_array($_SESSION['userlevel'], [1, 2, 3])) {
                     ?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?=base_url('pengambilan')?>">Pengambilan</a>
@@ -70,7 +70,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?=base_url('pengambilan/terlambat')?>">Ketidaktepatan Waktu <br>Pengembalian</a>
                     </li>
-                    <?php }else if(in_array($_SESSION['userlevel'], [1,2, 4, 5])){?>
+                    <?php }
+                    if(in_array($_SESSION['userlevel'], [1,2, 4, 5])){?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?=base_url('pengembalian')?>">Pengembalian</a>
                     </li>

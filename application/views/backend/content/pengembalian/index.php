@@ -27,6 +27,7 @@
                     <th>Tanggal Harus kembali</th>
                     <th>Tanggal Pengembalian</th>
                     <?php if($_SESSION['userlevel'] == 5){?>
+                    <th>Status</th>
                     <th>Aksi</th>
                     <?php }?>
                 </tr>
@@ -42,15 +43,20 @@
                     <td><?= $d['tanggal_lahir_pasien'] ?></td>
                     <td><?= $d['ruangan'] ?></td>
                     <td><?= $d['tanggal_harus_kembali'] ?></td>
-                    <!-- <td><?= $d['tanggal_kembali'] ?></td> -->
                     <td><?= $d['created_at'] ?></td>
                     <?php if($_SESSION['userlevel'] == 5){?>
+                    <td><?= STATUS_TERIMA[$d['status']]?></td>
                     <td>
-                        <a target="_blank" href='<?=base_url($this->uri->segment(1)."/detail/".$d['id'])?>'>
-                            <button type="button" class="btn btn-sm btn-sms btn-icons btn-rounded btn-outline-warning">
-                            <i class="mdi mdi-book"></i>
+                        <?php
+                        if($d['status'] == 0){
+                            ?>
+                            
+                        <a  href='<?=base_url($this->uri->segment(1)."/status/".$d['id'])?>'>
+                            <button type="button" class="btn btn-sm btn-sms btn-icons btn-rounded btn-outline-success">
+                            <i class="mdi mdi-check"></i>
                             </button> 
                         </a>
+                        <?php } ?>
                     </td>
                     <?php } ?>
                 </tr>

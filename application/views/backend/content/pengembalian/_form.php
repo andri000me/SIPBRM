@@ -85,6 +85,19 @@
                 </div>
               </div>
             </div>
+            <p class="card-description">
+            Tanggal Kembali
+            </p>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group row">
+                  <!-- <label class="col-sm-3 col-form-label">Address 1</label> -->
+                  <div class="col-sm-12">
+                    <input type="date" class="form-control" name="tanggal_kembali" required>
+                  </div>
+                </div>
+              </div>
+            </div>
             
             <div class='col-md-12 row'>
               <button class='btn btn-primary pull-right delete' type='submit'><?=$type?></button>

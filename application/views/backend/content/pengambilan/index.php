@@ -21,7 +21,7 @@
                     <th>Ruangan</th>
                     <th>Status</th>
                     <th>Tanggal Ambil</th>
-                    <th>Tanggal Harus Kembali</th>
+                    <!-- <th>Tanggal Harus Kembali</th> -->
                     <!-- <th>Aksi</th> -->
                 </tr>
                 </thead>
@@ -30,18 +30,16 @@
                     $no = 1;
                     foreach ($data as $d) {
                         $tanggal_sekarang = strtotime(date("Y-m-d H:i:s"));
-                        $tanggal_kembali = strtotime($d['tanggal_harus_kembali']);
                         // echo (strtotime($d['tanggal_harus_kembali']))."\n";
                         // echo "".strtotime($d['create_at']);
                     ?>
-                <tr class='<?=(($tanggal_sekarang > $tanggal_kembali && $d['status'] == 0) ? "table-danger" : "")?>'>
+                <tr>
                     <td><?=$no ?></td>
                     <td><?= $d['nama_pasien'].'['.$d['no_rm'].']' ?></td>
                     <td><?= $d['tanggal_lahir_pasien'] ?></td>
                     <td><?= $d['ruangan'] ?></td>
                     <td><?=($d['status'] == 0 ? 'belum dikembalikan' : 'sudah dikembalikan')?></td>
                     <td><?= $d['created_at'] ?></td>
-                    <td><?= $d['tanggal_harus_kembali'] ?></td>
                     <!-- <td>
                         <?php
                         if($d['status'] == 0 & ($_SESSION['userlevel'] != 2)){
