@@ -44,25 +44,24 @@
                 <div class="form-group row">
                   <label class="col-sm-3 col-form-label">Ruangan</label>
                   <div class="col-sm-9">
-                    <input type="number" name="ruangan" placeholder="ruangan" class="form-control" value="<?= Input_helper::postOrOr('ruangan', $data['ruangan']) ?>" required>
+                    <input type="text" name="ruangan" placeholder="ruangan" class="form-control" value="<?= Input_helper::postOrOr('ruangan', $data['ruangan']) ?>" required>
                     <div class="msg"></div>
                   </div>
                 </div>
               </div>
             </div>
-            <p class="card-description">
+            <!-- <p class="card-description">
             Tanggal Pasien Pulang
             </p>
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group row">
-                  <!-- <label class="col-sm-3 col-form-label">Address 1</label> -->
                   <div class="col-sm-12">
                     <input type="date" class="form-control" name="tanggal_pulang" required>
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
             <div class='col-md-12 row'>
               <button class='btn btn-primary pull-right' type='submit'><?=$type?></button>
             </div>

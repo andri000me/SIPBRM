@@ -44,6 +44,10 @@ class Pengambilan extends CI_Controller {
 		$data['data'] = $this->db->query("SELECT p.nama, pem.* FROM $this->low pem JOIN pengguna p ON pem.created_by=p.id $where")->result_array();
         $this->load->view('backend/index',$data);
 	}
+	public function getRmData($id){
+		$q = $this->db->get_where("pengambilan", ['no_rm'=> $id])->row_array();
+		echo json_encode($q);
+	}
 	public function store(){
 		$d = $_POST;
 		// echo $this->input->post('tanggal_pulang');
@@ -55,9 +59,6 @@ class Pengambilan extends CI_Controller {
 				'nama_pasien' => $this->input->post('nama_pasien'), 
 				'tanggal_lahir_pasien' => $this->input->post('tanggal_lahir_pasien'), 
 				'ruangan' => $this->input->post('ruangan'), 
-				'tanggal_pulang' => $this->input->post('tanggal_pulang'), 
-				// 'keperluan' => $this->input->post('keperluan'), 
-				// 'keterangan' => $this->input->post('keterangan'), 
 				'tanggal_harus_kembali' => date("Y-m-d", strtotime($this->input->post('tanggal_pulang'). "+2 days")), 
 				'created_by' => $_SESSION['userid'],
 			];

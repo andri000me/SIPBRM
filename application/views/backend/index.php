@@ -59,8 +59,39 @@
     <!-- <script src="<?=base_url('assets/')?>js/script_development.js"></script> -->
     <!-- endinject -->
     <!-- Custom js for this page-->
-    <!-- <script src="<?=base_url('assets/')?>js/chart.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script> -->
+    <script>
+      $(function(){
+        $("#get_no_rm").change(function(){
+          var val = $(this).val();
+          $.ajax({
+            type: "GET",
+            url: BASEURL+"pengambilan/getRmData/"+val,
+            cache: false,
+            success: function(data){
+              console.log(data);
+              var obj = JSON.parse(data);
+              $("#tanggal_lahir").text(obj.tanggal_lahir_pasien);
+              $("#nama_pasien").text(obj.nama_pasien);
+              $("#ruangan").text(obj.ruangan);
+              $("#id_pengambilan").val(obj.id);
+                // if(data != ""){
+                //     $(".msg").text(data);
+                //     $(".msg").addClass("alert alert-danger");
+                //     $(".btn").hide();
+                // }else{
+                //     $(".msg").text("");
+                //     $(".msg").removeClass("alert alert-danger");
+                //     $(".btn").show();
+                // }
+            },
+            error(res){
+                console.log("errrror")
+                console.log("res");
+            }
+        });
+        })
+      })
+    </script>
     <?php 
     if($this->uri->segment(1) == "dashboard"){?>
     <script>

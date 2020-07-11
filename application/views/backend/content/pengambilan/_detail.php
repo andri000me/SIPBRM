@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Peminjaman Report</title>
+  <title>pengambilan Report</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -34,7 +34,7 @@
     <div class="row">
       <div class="col-xs-12">
         <h2 class="page-header">
-          <i class="fa fa-hospital-o"></i> Peminjaman
+          <i class="fa fa-hospital-o"></i> pengambilan
           <small class="pull-right">Date: <?= date('Y-m-d') ?></small>
         </h2>
       </div>

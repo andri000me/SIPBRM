@@ -11,6 +11,11 @@
                 </div>";
                 }
             ?>
+            <?php 
+            if($_SESSION['userlevel'] == 4){
+            ?>
+            <a href="<?php echo base_url($this->uri->segment(1)); ?>/add"><button class="btn btn-primary btn-sm pull-right">Pengembalian Baru <span class="fa fa-plus"></span></button></a><br><br />
+            <?php } ?>
             <div class="table-responsive">
             <table class="table table-striped">
                 <thead>

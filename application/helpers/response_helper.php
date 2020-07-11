@@ -14,21 +14,21 @@ class Response_helper
 		$CI =& get_instance();
 		$token = "1048537149:AAEjn0E8xMhUGna-q48mtk0-M3GfDxcT-_I";
 		$now = date("Y-m-d H:i:s");
-		// echo "SELECT p.*, pg.chat_id, p.nama_pasien FROM peminjaman p 
+		// echo "SELECT p.*, pg.chat_id, p.nama_pasien FROM pengambilan p 
 		// JOIN pengguna pg ON p.created_by=pg.id 
 		// where tanggal_harus_kembali <= '$now'";
-		$list = $CI->db->query("SELECT p.*, pg.chat_id, p.nama_pasien FROM peminjaman p 
+		$list = $CI->db->query("SELECT p.*, pg.chat_id, p.nama_pasien FROM pengambilan p 
 		JOIN pengguna pg ON p.created_by=pg.id 
 		where tanggal_harus_kembali <= '$now'")->result_array();
 		foreach ($list as $d) {
 			// echo $d['no_rm']."<br>";
 			// echo $d['nama']."<br>";
 			$pesan = "Notifikasi Aplikasi \n no rekam medis *$d[no_rm] & nama pasien $d[nama_pasien]*  hrs segera dikembalikan";
-			// $CI->db->update("peminjaman", ['status_notif' => 1], ['id' => $d['id']]);
-			$cek = $CI->db->get_where("peminjaman", ['status_notif' => 0, 'id' => $d['id']])->num_rows();
+			// $CI->db->update("pengambilan", ['status_notif' => 1], ['id' => $d['id']]);
+			$cek = $CI->db->get_where("pengambilan", ['status_notif' => 0, 'id' => $d['id']])->num_rows();
 			// echo $cek;
 			if($cek > 0){
-				$CI->db->query("UPDATE peminjaman set status_notif=1 where id=$d[id] and status_notif=0");
+				$CI->db->query("UPDATE pengambilan set status_notif=1 where id=$d[id] and status_notif=0");
 				Response_Helper::notification($d['chat_id'], $pesan, $token);
 			}
 		}

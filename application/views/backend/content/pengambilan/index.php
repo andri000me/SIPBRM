@@ -22,7 +22,7 @@
                     <th>Status</th>
                     <th>Tanggal Ambil</th>
                     <th>Tanggal Harus Kembali</th>
-                    <th>Aksi</th>
+                    <!-- <th>Aksi</th> -->
                 </tr>
                 </thead>
                 <tbody>
@@ -42,12 +42,7 @@
                     <td><?=($d['status'] == 0 ? 'belum dikembalikan' : 'sudah dikembalikan')?></td>
                     <td><?= $d['created_at'] ?></td>
                     <td><?= $d['tanggal_harus_kembali'] ?></td>
-                    <td>
-                         <!-- <a target="_blank" href='<?=base_url($this->uri->segment(1)."/detail/".$d['id'])?>'>
-                            <button type="button" class="btn btn-sm btn-sms btn-icons btn-rounded btn-outline-warning">
-                            <i class="mdi mdi-book"></i>
-                            </button> 
-                        </a> -->
+                    <!-- <td>
                         <?php
                         if($d['status'] == 0 & ($_SESSION['userlevel'] != 2)){
                         ?>
@@ -57,13 +52,8 @@
                             </button> 
                         </a>
                         <?php } ?>
-                        <!--
-                        <a href='<?=base_url($this->uri->segment(1)."/delete/".$d['id'])?>' class='delete'>
-                            <button type="button" class="btn btn-sms btn-icons btn-rounded btn-outline-danger">
-                            <i class="fa fa-trash-o"></i>
-                            </button>
-                        </a> -->
-                    </td>
+                       
+                    </td> -->
                 </tr>
                     <?php $no++; }?>
                 </tbody>

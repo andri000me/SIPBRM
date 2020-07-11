@@ -9,8 +9,8 @@ class Pengembalian extends CI_Controller {
 		$this->load->helper("Response_helper");
 		$this->load->helper("Input_helper");
 		date_default_timezone_set('Asia/Jakarta');
-		if($this->uri->segment(2) == "kembalikan" && $_SERVER['REQUEST_METHOD'] == "POST"){
-			$this->update($this->uri->segment(3));
+		if($this->uri->segment(2) == "add" && $_SERVER['REQUEST_METHOD'] == "POST"){
+			$this->simpan();
 		}
 	}
 	
@@ -25,12 +25,20 @@ class Pengembalian extends CI_Controller {
 		JOIN pengguna pg ON p.created_by=pg.id JOIN pengambilan pem ON p.id_pengambilan=pem.id $where")->result_array();
         $this->load->view('backend/index',$data);
     }
+	public function add(){
+		$data['title'] = " $this->cap Berkas";
+		$data['content'] = "$this->low/_form";
+		$data['type'] = 'Ubah';
+		$data['pengambilan'] = $this->db->query("SELECT DISTINCT(no_rm) FROM pengambilan")->result_array();
+		$data['data'] = null;		
+		$this->load->view('backend/index',$data);
+	}
 	
 	public function detail($id){
 		$data['title'] = "Ubah $this->cap";
 		$data['type'] = 'Detail';
-		$data['data'] = $this->db->query("SELECT pm.id as id_peminjaman, pgm.id as id_pengembalian, pgm.keterangan, pgm.created_at as tanggal_kembali, pm.no_rm, pm.keperluan, pm.keterangan, pm.tanggal_harus_kembali, pm.created_at, pm.nama_pasien as nama, pm.tanggal_lahir_pasien, 
-		pg.nama as peminjam, pg.email FROM `peminjaman` pm JOIN pengguna pg ON pm.created_by=pg.id join pengembalian pgm ON pm.id=pgm.id_peminjaman WHERE pm.id='$id'")->row_array();		
+		$data['data'] = $this->db->query("SELECT pm.id as id_pengembalian, pgm.id as id_pengembalian, pgm.keterangan, pgm.created_at as tanggal_kembali, pm.no_rm, pm.keperluan, pm.keterangan, pm.tanggal_harus_kembali, pm.created_at, pm.nama_pasien as nama, pm.tanggal_lahir_pasien, 
+		pg.nama as peminjam, pg.email FROM `pengembalian` pm JOIN pengguna pg ON pm.created_by=pg.id join pengembalian pgm ON pm.id=pgm.id_pengembalian WHERE pm.id='$id'")->row_array();		
 		$this->load->view('backend/content/pengembalian/_detail',$data);
 		// print_r($data);
 	}
@@ -39,22 +47,22 @@ class Pengembalian extends CI_Controller {
 		$data['content'] = "$this->low/_form";
 		$data['type'] = 'Ubah';
 		// $data['provinsi'] = $this->db->get("provinsi")->result_array();
-		$data['data'] = $this->db->get_where("peminjaman", ['id' => $id])->row_array();		
+		$data['data'] = $this->db->get_where("pengembalian", ['id' => $id])->row_array();		
 		$this->load->view('backend/index',$data);
 	}
-	public function update($id){
+	public function simpan(){
 		$d = $_POST;
 		try{
 			$arr =
 			[
-				'id_peminjaman' => $id, 
-				'keterangan' => $this->input->post('keterangan'), 
-				// // 'tanggal_pulang' => $this->input->post('tanggal_pulang'), 
+				'id_pengambilan' => $this->input->post("id_pengambilan"), 
+				'status' => 0, 
+				'tanggal_pulang' => $this->input->post('tanggal_pulang'), 
+				'bayar' => $this->input->post('bayar'), 
 				'created_at' => date('Y-m-d H:i:s'),
 				'created_by' => $_SESSION['userid']	
 			];
 			$this->session->set_flashdata("message", ['success', "$this->cap Berhasil", ' Berhasil']);
-			$this->db->update("peminjaman",['status' => 1], ['id' => $id]);
 			$this->db->insert("$this->low",$arr);
 			redirect(base_url("$this->low/"));
 			

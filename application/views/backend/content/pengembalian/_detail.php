@@ -59,7 +59,7 @@
       </div>
       <!-- /.col -->
       <div class="col-sm-4">
-        <b>Peminjaman #<?= $data['id_peminjaman'] ?></b><br>
+        <b>pengambilan #<?= $data['id_pengambilan'] ?></b><br>
         <br>
         <b>Tanggal Pinjam:</b> <?= date('Y-m-d', strtotime($data['created_at'])) ?><br>
         <b>Tanggal Jadwal Pengembalian:</b> <?= date('Y-m-d', strtotime($data['tanggal_harus_kembali'])) ?><br>

@@ -15,7 +15,7 @@
                 </div>
             </div>
             </div>
-            <?php 
+            <!-- <?php 
             if($_SESSION['userlevel'] != 2 && $_SESSION['userlevel'] != 5){
             ?>
             <a href="<?=base_url('pengambilan/add')?>">
@@ -23,7 +23,7 @@
                 <i class="mdi mdi-plus"></i>
                 </button>
             </a>
-            <?php } ?>
+            <?php } ?> -->
         </div>
         </li>
         <!-- <li class="nav-item <?= ($this->uri->segment(1) == "dashboard" ? 'active' : '') ?>">
@@ -62,7 +62,7 @@
             <div class="collapse" id="pengambilan">
                 <ul class="nav flex-column sub-menu">
                 <?php if (in_array($_SESSION['userlevel'], [4, 1, 2, 3, 5])) { 
-                    if (in_array($_SESSION['userlevel'], [4, 1, 2, 3])) { 
+                    if (in_array($_SESSION['userlevel'], [1, 2, 3])) { 
                     ?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?=base_url('pengambilan')?>">Pengambilan</a>
@@ -70,12 +70,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?=base_url('pengambilan/terlambat')?>">Ketidaktepatan Waktu <br>Pengembalian</a>
                     </li>
-                    <?php }?>
+                    <?php }else if(in_array($_SESSION['userlevel'], [1,2, 4, 5])){?>
                     <li class="nav-item">
+                        <a class="nav-link" href="<?=base_url('pengembalian')?>">Pengembalian</a>
+                    </li>
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="<?=base_url('pengembalian')?>">Laporan Pengembalian</a>
                     </li>
-                    
-                    <?php }  ?>
+                     -->
+                    <?php } } ?>
                 </ul>
             </div>
         </li>

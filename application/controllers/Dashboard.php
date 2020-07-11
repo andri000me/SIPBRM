@@ -28,14 +28,20 @@ class Dashboard extends CI_Controller {
   	}
 	public function index()
 	{
-		$data['title'] = "Berkas - Dashboard Berkas";
-		$data['content'] = "dashboard/index";
-		$data['buku'] = [];
-		$data['pinjam'] = $this->db->get("peminjaman")->result_array();
+		// $data['title'] = "Berkas - Dashboard Berkas";
+		// $data['content'] = "dashboard/index";
+		// $data['buku'] = [];
+		// $data['pinjam'] = $this->db->get("peminjaman")->result_array();
 		$data['telat'] = [];
 		$data['pengguna'] = $this->db->get("pengguna")->result_array();
 		$data['pasien'] = [];
-		redirect(base_url().'pengguna');
-		$this->load->view('backend/index',$data);
+		if(in_array($_SESSION['userlevel'], [1, 2])){
+			redirect(base_url().'pengguna');
+		}else if(in_array($_SESSION['userlevel'], [3])){
+			redirect(base_url().'pengambilan');
+		}else if(in_array($_SESSION['userlevel'], [4, 5])){
+			redirect(base_url().'pengembalian');
+		}
+		// $this->load->view('backend/index',$data);
 	}
 }
