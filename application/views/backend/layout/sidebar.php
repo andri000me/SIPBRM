@@ -67,11 +67,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?=base_url('pengambilan')?>">Pengambilan</a>
                     </li>
+                    <?php }
+                    if(in_array($_SESSION['userlevel'], [1,2, 4, 5])){?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?=base_url('pengambilan/terlambat')?>">Ketidaktepatan Waktu <br>Pengembalian</a>
                     </li>
-                    <?php }
-                    if(in_array($_SESSION['userlevel'], [1,2, 4, 5])){?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?=base_url('pengembalian')?>">Pengembalian</a>
                     </li>

@@ -16,10 +16,10 @@
                 <thead>
                 <tr>
                     <th>No</th>
-                    <th>Nama Peminjam</th>
+                    <th>Nama Pasien[no rm]</th>
                     <th>Tanggal Lahir</th>
                     <th>Ruangan</th>
-                    <th>Status</th>
+                    <!-- <th>Status</th> -->
                     <th>Tanggal Ambil</th>
                     <!-- <th>Tanggal Harus Kembali</th> -->
                     <!-- <th>Aksi</th> -->
@@ -38,7 +38,7 @@
                     <td><?= $d['nama_pasien'].'['.$d['no_rm'].']' ?></td>
                     <td><?= $d['tanggal_lahir_pasien'] ?></td>
                     <td><?= $d['ruangan'] ?></td>
-                    <td><?=($d['status'] == 0 ? 'belum dikembalikan' : 'sudah dikembalikan')?></td>
+                    <!-- <td><?=($d['status'] == 0 ? 'belum dikembalikan' : 'sudah dikembalikan')?></td> -->
                     <td><?= $d['created_at'] ?></td>
                     <!-- <td>
                         <?php
