@@ -25,10 +25,12 @@
                     <th>Tanggal Lahir</th>
                     <th>Ruangan</th>
                     <th>Tanggal Harus kembali</th>
-                    <th>Tanggal Pengembalian</th>
+                    <th>Tanggal Kembali</th>
+                    <th>Tanggal Pasien Pulang</th>
                     <?php if($_SESSION['userlevel'] == 5){?>
                     <th>Status</th>
                     <th>Aksi</th>
+                    <th>Nama Petugas</th>
                     <?php }?>
                 </tr>
                 </thead>
@@ -44,6 +46,7 @@
                     <td><?= $d['ruangan'] ?></td>
                     <td><?= $d['tanggal_harus_kembali'] ?></td>
                     <td><?= $d['created_at'] ?></td>
+                    <td><?= $d['tanggal_pulang'] ?></td>
                     <?php if($_SESSION['userlevel'] == 5){?>
                     <td><?= STATUS_TERIMA[$d['status']]?></td>
                     <td>
@@ -58,6 +61,7 @@
                         </a>
                         <?php } ?>
                     </td>
+                    <td><?= $_SESSION['nama'] ?></td>
                     <?php } ?>
                 </tr>
                     <?php $no++; }?>
