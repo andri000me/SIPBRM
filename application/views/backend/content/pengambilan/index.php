@@ -19,10 +19,7 @@
                     <th>Nama Pasien[no rm]</th>
                     <th>Tanggal Lahir</th>
                     <th>Ruangan</th>
-                    <!-- <th>Status</th> -->
-                    <th>Tanggal Ambil</th>
-                    <!-- <th>Tanggal Harus Kembali</th> -->
-                    <!-- <th>Aksi</th> -->
+                    <th><?= ($this->uri->segment(2) == 'terlambat' ? 'Taggal Harus Kembali' : 'Tanggal Ambil') ?></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -39,7 +36,7 @@
                     <td><?= $d['tanggal_lahir_pasien'] ?></td>
                     <td><?= $d['ruangan'] ?></td>
                     <!-- <td><?=($d['status'] == 0 ? 'belum dikembalikan' : 'sudah dikembalikan')?></td> -->
-                    <td><?= $d['created_at'] ?></td>
+                    <td><?= ($this->uri->segment(2) == 'terlambat' ? $d['tanggal_harus_kembali'] : $d['created_at']) ?></td>
                     <!-- <td>
                         <?php
                         if($d['status'] == 0 & ($_SESSION['userlevel'] != 2)){

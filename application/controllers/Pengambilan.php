@@ -35,13 +35,13 @@ class Pengambilan extends CI_Controller {
 		$this->load->view('backend/index',$data);
 	}
 	public function terlambat(){
-		$data['title'] = "Data $this->cap Terlambat";
+		$data['title'] = "Data Pengembalian Terlambat";
 		$data['content'] = "$this->low/index";
 		$where = " WHERE DATE(pe.tanggal_harus_kembali) < DATE(NOW()) AND pe.status=0";
 		// if ($_SESSION['userlevel'] == 4) {
 		// 	$where.=" AND pem.created_by= $_SESSION[userid]";
 		// }
-		$data['data'] = $this->db->query("SELECT p.nama, pem.* FROM $this->low pem JOIN pengembalian pe ON pem.id=pe.id_pengambilan JOIN pengguna p ON pem.created_by=p.id $where")->result_array();
+		$data['data'] = $this->db->query("SELECT p.nama, pem.*, pe.tanggal_harus_kembali FROM $this->low pem JOIN pengembalian pe ON pem.id=pe.id_pengambilan JOIN pengguna p ON pem.created_by=p.id $where")->result_array();
         $this->load->view('backend/index',$data);
 	}
 	public function getRmData($id){
