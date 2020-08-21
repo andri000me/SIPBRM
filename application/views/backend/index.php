@@ -61,6 +61,9 @@
     <!-- Custom js for this page-->
     <script>
       $(function(){
+        var url = location.pathname.split("/").slice(-1)[0].replace(/^\/|\/$/g, '');
+        console.log(url);
+        // console.log(location.pathname.split("/")[2].replace(/^\/|\/$/g, ''));
         $("#get_no_rm").change(function(){
           var val = $(this).val();
           $.ajax({

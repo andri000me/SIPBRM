@@ -55,8 +55,9 @@
                             ?>
                             
                         <a  href='<?=base_url($this->uri->segment(1)."/status/".$d['id'])?>'>
-                            <button type="button" class="btn btn-sm btn-sms btn-icons btn-rounded btn-outline-success">
-                            <i class="mdi mdi-check"></i>
+                            <button type="button" class="btn btn-sm btn-sms  btn-outline-success">
+                            <!-- <i class="mdi mdi-check"></i> -->
+                            Kembalikan
                             </button> 
                         </a>
                         <?php } ?>
