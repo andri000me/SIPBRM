@@ -29,6 +29,19 @@ class Response_helper
 				Response_Helper::notification($d['chat_id'], $pesan, $token);
 			}
 		}
+		$li = $CI->db->query("SELECT DATEDIFF(DATE(tanggal_harus_kembali), DATE(NOW())) jarak from pengembalian HAVING jarak <= 2 &&  jarak > 0")->result_array();
+		foreach ($li as $l) {
+			// echo $d['no_rm']."<br>";
+			// echo $d['nama']."<br>";
+			$pesan = "Notifikasi Aplikasi \n no rekam medis *$d[no_rm] & nama pasien $d[nama_pasien]*  untuk segera dikembalika sebelum waktu 2x24 jam";
+			// $CI->db->update("pengambilan", ['status_notif' => 1], ['id' => $d['id']]);
+			$cek = $CI->db->get_where("pengembalian", ['status_notif' => 0, 'id' => $d['id'], 'status' => 0])->num_rows();
+			// echo $cek;
+			if($cek > 0){
+				$CI->db->query("UPDATE pengembalian set status_notif=1 where id=$d[id] and status_notif=0");
+				Response_Helper::notification($d['chat_id'], $pesan, $token);
+			}
+		}
 	}
 	public static function notification($telegram_id, $message_text, $secret_token){
 		$url = "https://api.telegram.org/bot" . $secret_token . "/sendMessage?parse_mode=markdown&chat_id=" . $telegram_id;
